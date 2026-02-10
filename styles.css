@@ -1,0 +1,291 @@
+﻿:root {
+  --bg: #0f131c;
+  --panel: #1b1f28;
+  --panel-2: #232937;
+  --text: #f2f5ff;
+  --muted: #aab3c7;
+  --gold: #e1b741;
+  --line: #2f3647;
+}
+
+* { box-sizing: border-box; image-rendering: pixelated; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 1.2rem 1.25rem 2.5rem;
+}
+
+.bg-layer {
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+}
+
+.bg-image {
+  background-image: url("assets/background/modernclient_main_menu.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: scale(1.12);
+  transition: transform 0.08s linear;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  max-width: 1050px;
+  margin: 0 auto 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 140px;
+}
+
+.main-logo {
+  width: min(560px, 88vw);
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(225, 183, 65, 0.45)) drop-shadow(0 0 22px rgba(225, 183, 65, 0.25));
+}
+
+.discord-btn {
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  z-index: 30;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  border: 1px solid #3a4155;
+  background: rgba(27, 31, 40, 0.92);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.42);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.discord-btn:hover {
+  transform: translateY(-2px) scale(1.06);
+  border-color: #e1b741;
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.52);
+}
+
+.discord-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  image-rendering: auto;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  max-width: 1050px;
+  margin: 0 auto 1rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(35, 41, 55, 0.9), rgba(27, 31, 40, 0.96));
+  border-radius: 0;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.42);
+}
+
+.launcher {
+  display: flex;
+  justify-content: center;
+  padding: 1.2rem;
+}
+
+.launcher-center {
+  width: min(520px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  color: var(--gold);
+  text-transform: none;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
+}
+
+.dropdown {
+  position: relative;
+  width: min(380px, 100%);
+  outline: none;
+}
+
+.mc-btn {
+  border: 1px solid #3a4155;
+  border-radius: 0;
+  background: #1b1f28;
+  color: var(--text);
+  position: relative;
+  transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.mc-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: #e1b741;
+}
+
+.mc-btn:hover {
+  transform: scale(1.03);
+  background: #2a2f3a;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.dropdown-btn {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.72rem;
+}
+
+.arrow { transition: transform 0.2s ease; }
+.arrow.open { transform: rotate(180deg); }
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  width: 100%;
+  border: 1px solid #3a4155;
+  background: #111620;
+  border-radius: 0;
+  overflow: hidden;
+  z-index: 15;
+  animation: pop 0.18s ease;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dropdown-menu button {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #222a38;
+  text-align: left;
+  padding: 0.7rem 0.8rem;
+  cursor: pointer;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.68rem;
+}
+
+.dropdown-menu button:last-child { border-bottom: 0; }
+.dropdown-menu button:hover { background: #2b3448; }
+.dropdown-menu button.active {
+  background: #2b3448;
+  color: var(--gold);
+}
+
+.actions {
+  margin-top: 1.1rem;
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.78rem 1.2rem;
+  cursor: pointer;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.72rem;
+}
+
+.btn.primary {
+  border-color: #cfa63b;
+  background: #1b1f28;
+  color: #ffecb3;
+}
+
+.launch-btn {
+  margin-top: 1.2rem;
+  width: min(340px, 100%);
+  min-height: 48px;
+  font-size: 0.9rem;
+}
+
+.in-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.42s ease, transform 0.42s ease;
+}
+
+.in-up.delay-1 { transition-delay: 0.08s; }
+.in-up.delay-2 { transition-delay: 0.16s; }
+.in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.beta-warning {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%) translateY(10px);
+  width: min(980px, calc(100vw - 32px));
+  z-index: 25;
+  border: 1px solid #3a4155;
+  border-radius: 0;
+  background: #1b1f28;
+  color: #ffecb3;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.6rem;
+  line-height: 1.45;
+  padding: 10px 12px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45);
+}
+
+.beta-warning.in-up {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.beta-warning.in-up.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.beta-warning::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #e1b741;
+}
+
+@media (max-width: 880px) {
+  .main-logo { width: min(500px, 94vw); }
+  .beta-warning {
+    font-size: 0.52rem;
+    line-height: 1.35;
+  }
+}

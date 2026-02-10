@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Client Launcher</title>
+  <meta name="description" content="Modern Client Launcher" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="app" @mousemove="onMouseMove">
+    <div class="bg-layer bg-image" :style="bgStyle"></div>
+
+    <a
+      class="discord-btn in-up delay-1"
+      :class="{show: ready}"
+      href="https://discord.gg/bTnDKTmD3q"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Join Discord">
+      <img src="assets/buttons/discord.png" alt="Discord" draggable="false" />
+    </a>
+
+    <header class="header in-up" :class="{show: ready}">
+      <img class="main-logo" src="assets/title/modernclient_title.png" alt="Modern Client" draggable="false" />
+    </header>
+
+    <main class="launcher card in-up delay-1" :class="{show: ready}">
+      <div class="launcher-center">
+        <p class="eyebrow">Select Build</p>
+
+        <div class="dropdown" @click="openDropdown = !openDropdown" @keydown.enter.prevent="openDropdown = !openDropdown" tabindex="0">
+          <button class="dropdown-btn mc-btn" type="button">
+            <strong>{{ selectedBuild.label }}</strong>
+            <span class="arrow" :class="{open: openDropdown}">⌄</span>
+          </button>
+          <div class="dropdown-menu" v-show="openDropdown">
+            <button
+              v-for="option in buildOptions"
+              :key="option.value"
+              type="button"
+              class="mc-btn"
+              :class="{active: option.value === selectedBuild.value}"
+              @click.stop="selectBuild(option)">
+              {{ option.label }}
+            </button>
+          </div>
+        </div>
+
+        <button class="btn primary mc-btn launch-btn" type="button" @click="launchSelectedBuild">Launch</button>
+      </div>
+    </main>
+
+    <div class="beta-warning in-up delay-2" :class="{show: ready}">
+      Warning! Modern Client is currently in Beta Testing, if you would like to give feedback on the client please check out the discord server at the top right of the website!
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

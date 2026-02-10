@@ -1,0 +1,8 @@
+client-version-integer=0
+client-package-name=net.lax1dude.eaglercraft.v1_8.client
+client-origin-name=Eaglercraft
+client-origin-version=u0
+client-origin-vendor=PeytonPlayz585
+client-fork-name=Eaglercraft
+client-fork-version=u0
+client-fork-vendor=PeytonPlayz585
