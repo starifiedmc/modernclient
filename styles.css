@@ -113,6 +113,15 @@ html, body {
   align-items: center;
 }
 
+.hotfix-title {
+  margin: 0 0 0.5rem;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffecb3;
+  text-align: center;
+}
+
 .eyebrow {
   margin: 0 0 0.6rem;
   color: var(--gold);
